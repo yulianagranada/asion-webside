@@ -1,0 +1,435 @@
+/* ======================================================
+   Author: Sofía Torres Gutiérrez
+   Description: Ashion Store - Versión Final Limpia y Optimizada
+   ====================================================== */
+
+/* ======================================================
+   VARIABLES GLOBALES
+   ====================================================== */
+:root {
+  --font-primary: 'Poppins', sans-serif;
+  --font-script: 'Great Vibes', cursive;
+  --color-accent: #f16c5b;
+  --color-dark: #222;
+  --color-light: #fff;
+  --color-text: #555;
+
+  --bg-women: #f6e9e2;
+  --bg-men: #c7e7df;
+  --bg-kids: #e9e6fa;
+  --bg-cosmetics: #fbe0ea;
+  --bg-accessories: #d7ebfa;
+}
+
+/* ======================================================
+   GLOBAL
+   ====================================================== */
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-light);
+  color: var(--color-text);
+  margin: 0;
+  padding: 0;
+}
+
+.header__logo {
+  font-family: var(--font-script);
+  font-size: 2rem;
+  color: var(--color-dark);
+}
+
+.nav__link {
+  color: var(--color-dark);
+  font-weight: 500;
+  margin: 0 10px;
+  transition: all 0.2s;
+}
+
+.nav__link:hover,
+.nav__link.active {
+  color: var(--color-accent);
+  text-decoration: underline 2px solid var(--color-accent);
+  text-underline-offset: 4px;
+}
+
+/* ======================================================
+   GRID PRINCIPAL
+   ====================================================== */
+.hero__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 15px;
+  align-items: stretch;
+}
+
+/* Posiciones */
+.hero__item--women { grid-column: 1 / 2; grid-row: 1 / 3; }
+.hero__item--men { grid-column: 2 / 3; grid-row: 1 / 2; }
+.hero__item--kids { grid-column: 3 / 4; grid-row: 1 / 2; }
+.hero__item--cosmetics { grid-column: 2 / 3; grid-row: 2 / 3; }
+.hero__item--accessories { grid-column: 3 / 4; grid-row: 2 / 3; }
+
+/* ======================================================
+   BLOQUES BASE
+   ====================================================== */
+.hero__item {
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  color: var(--color-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.5rem;
+  height: 300px;
+}
+
+/* Colores base */
+.hero__item--women { background-color: var(--bg-women); height: 640px; }
+.hero__item--men { background-color: var(--bg-men); }
+.hero__item--kids { background-color: var(--bg-kids); }
+.hero__item--cosmetics { background-color: var(--bg-cosmetics); }
+.hero__item--accessories { background-color: var(--bg-accessories) !important; z-index: 0; }
+
+/* ======================================================
+   WOMEN'S FASHION (principal)
+   ====================================================== */
+.hero__item--women {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: left;
+}
+
+.hero__item--women::after {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  right: -150px;
+  width: 180%;
+  height: 120%;
+  background-image: url("../img/women.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right bottom;
+  z-index: 1;
+}
+
+.hero__item--women .hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 60%;
+  padding-left: 0;
+  padding-top: 11rem;
+}
+
+.hero__item--women .hero__title {
+  font-family: var(--font-script);
+  font-size: 4.2rem;
+  line-height: 1.0;
+  margin-bottom: 1rem;
+  color: var(--color-dark);
+  white-space: nowrap;
+}
+
+.hero__item--women .hero__text {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 1.8rem;
+}
+
+/* ======================================================
+   BLOQUES SECUNDARIOS (Men, Kids, Cosmetics, Accessories)
+   ====================================================== */
+.hero__item--men,
+.hero__item--kids,
+.hero__item--cosmetics,
+.hero__item--accessories {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 310px;
+}
+
+/* === IMÁGENES === */
+.hero__item--men::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: -180px;
+  width: 180%;
+  height: 125%;
+  background-image: url("../img/men.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right bottom;
+  z-index: 1;
+}
+
+.hero__item--kids::after {
+  content: "";
+  position: absolute;
+  bottom: -140px;
+  right: -75px;
+  width: 95%;
+  height: 195%;
+  background-image: url("../img/kids.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right bottom;
+  z-index: 1;
+}
+
+.hero__item--cosmetics::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: -80px;
+  width: 100%;
+  height: 125%;
+  background-image: url("../img/cosmetics.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right bottom;
+  z-index: 1;
+}
+
+.hero__item--accessories::after {
+  content: "";
+  position: absolute;
+  bottom: -25px;
+  right: -40px;
+  width: 100%;
+  height: 115%;
+  background-image: url("../img/accessories.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right bottom;
+  background-color: transparent;
+  z-index: 1;
+}
+
+
+/* === CONTENIDO DE TEXTO === */
+.hero__item--men .hero__content,
+.hero__item--kids .hero__content,
+.hero__item--cosmetics .hero__content,
+.hero__item--accessories .hero__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  height: 100%;
+  padding-left: -3rem;
+  padding-top: 3.6rem;
+  gap: 0.5rem;
+}
+
+/* === TÍTULO === */
+.hero__subtitle {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin: 0 0 0.4rem 0;
+  line-height: 1.3;
+  width: 100%;
+}
+
+/* === ITEMS === */
+.hero__count {
+  font-size: 0.95rem;
+  color: #555;
+  font-weight: 400;
+  margin: 0 0 0.6rem 0;
+  width: 100%;
+}
+
+/* === SHOP NOW === */
+.hero__link {
+  position: relative;
+  display: inline-block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--color-dark);
+  text-decoration: none;
+  margin-top: 0.4rem;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+/* Línea roja debajo (del tamaño exacto del texto) */
+.hero__link::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: red;
+  margin-top: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover: texto cambia y se desplaza */
+.hero__link:hover {
+  color: red;
+  transform: translateX(4px);
+}
+
+.hero__link:hover::after {
+  background-color: var(--color-dark);
+}
+
+/* Remover el texto automático anterior */
+.hero__count::after {
+  content: none;
+}
+
+
+/* Hover efecto */
+.hero__link:hover,
+.hero__count:hover::after {
+  color: red;
+  transform: translateX(4px);
+}
+
+/* Hover sobre línea */
+.hero__link:hover::after,
+.hero__count:hover::after {
+  background-color: var(--color-dark);
+}
+/* === AJUSTE FINAL: mover MEN y ACCESSORIES más a la izquierda === */
+.hero__item--men .hero__content,
+.hero__item--cosmetics .hero__content,
+.hero__item--kids .hero__content,
+.hero__item--accessories .hero__content {
+  position: absolute;
+  left: 15px;   /* antes estaba en 25px, ahora más a la izquierda */
+  bottom: 25px;
+  text-align: left;
+}
+
+
+/* ======================================================A
+   EFECTOS
+   ====================================================== */
+.hero__item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ======================================================
+   RESPONSIVE
+   ====================================================== */
+@media (max-width: 992px) {
+  .hero__grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  .hero__item--women {
+    grid-column: 1 / 3;
+    height: 500px;
+  }
+  .hero__item::after {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+  }
+  .hero__item {
+    height: 320px;
+  }
+  .hero__item--women {
+    height: 420px;
+  }
+  .hero__item::after {
+    width: 85%;
+  }
+  .hero__title {
+    font-size: 2.4rem;
+  }
+}
+/* ======================================================
+   RESPONSIVE EXTRA: celulares pequeños (<576px)
+   ====================================================== */
+@media (max-width: 576px) {
+  .hero__item {
+    height: 260px;
+    padding: 1rem;
+  }
+
+  .hero__item--women {
+    height: 360px;
+  }
+
+  .hero__title {
+    font-size: 1.8rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.4rem;
+  }
+
+  .hero__link {
+    font-size: 0.8rem;
+  }
+
+  .hero__item::after {
+    width: 100%;
+    right: -20px;
+  }
+}
+
+/* ======================================================
+   FIX: Mejor ajuste entre 901px y 768px (tablets medianas)
+   ====================================================== */
+@media (max-width: 905px) and (min-width: 769px) {
+  .hero__grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .hero__item--women {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    height: 520px;
+  }
+
+  .hero__item--men {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+
+  .hero__item--kids {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+
+  .hero__item--cosmetics {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+  }
+
+  .hero__item--accessories {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+  }
+
+  .hero__item::after {
+    width: 85%;
+  }
+
+  .hero__item--women .hero__title {
+    font-size: 3rem;
+  }
+}
